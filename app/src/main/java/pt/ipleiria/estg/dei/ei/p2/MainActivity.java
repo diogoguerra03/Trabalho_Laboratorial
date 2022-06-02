@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -37,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
                 aulas);
 
         listViewAulas.setAdapter(listAdapter);
+
+        listViewAulas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext()
+                        ,"Posição Selecionada: " + position
+                        ,Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

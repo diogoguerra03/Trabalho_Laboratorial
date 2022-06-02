@@ -162,4 +162,9 @@ public class Aula extends Identificador{
         sala = null;
         salaAremover.remover(this);
     }
+
+    @Override
+    public String toString() {
+        return "\n" + super.toString() + "\n" + sala + "\n";
+    }
 }
