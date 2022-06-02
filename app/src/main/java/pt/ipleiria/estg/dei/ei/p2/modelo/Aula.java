@@ -14,7 +14,7 @@ public class Aula extends Identificador{
 
     //construtor
     public Aula(String nome, long numero, Horario horario, Sala sala){
-        this(nome, numero, null, sala, null, new LinkedList<>());
+        this(nome, numero, horario, sala, null, new LinkedList<>());
         /*this.nome = nome;
         this.numero = numero;
         //this.sumario ="";

@@ -42,4 +42,9 @@ public class Horario {
                 horaFimHorario > this.horaDeInicio &&
                 horaFimThis > horario.horaDeInicio;
     }
+
+    @Override
+    public String toString() {
+        return diaSemana + " " +horaDeInicio + "h - " + (horaDeInicio+duracao) + "h";
+    }
 }

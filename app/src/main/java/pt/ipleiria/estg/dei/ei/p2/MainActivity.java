@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
         listViewAulas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext()
-                        ,"Posição Selecionada: " + position
-                        ,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Posição Selecionada: " + position,Toast.LENGTH_SHORT).show();
+                startActivity(DetalhesAulaActivity.createIntent(getApplicationContext(),position));
             }
         });
 
