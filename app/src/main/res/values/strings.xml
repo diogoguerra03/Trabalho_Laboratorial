@@ -3,4 +3,7 @@
     <string name="professor">Professor: </string>
     <string name="alunos">\nAlunos: </string>
     <string name="textoAdicionarAluno">Adicionar Aluno</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="textNome">Nome</string>
+    <string name="textNumero">Numero</string>
 </resources>

@@ -14,7 +14,11 @@
         android:theme="@style/Theme.TrabalhoLaboratorial"
         tools:targetApi="31">
         <activity
+            android:name=".AdicionarAlunoActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetalhesAulaActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

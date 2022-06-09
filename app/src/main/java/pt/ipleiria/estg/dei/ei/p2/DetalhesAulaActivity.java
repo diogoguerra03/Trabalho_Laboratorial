@@ -1,6 +1,7 @@
 package pt.ipleiria.estg.dei.ei.p2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -23,7 +24,10 @@ import pt.ipleiria.estg.dei.ei.p2.modelo.GestorSemanaAulas;
 public class DetalhesAulaActivity extends AppCompatActivity {
 
     private static final String INDICE_AULA = "INDICE_AULA";
+    private static final int REQUEST_CODE_ADICIONAR_ALUNO = 1;
     private ActivityDetalhesAulaBinding binding;
+    private int indiceAula;
+    private Aula aula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,8 @@ public class DetalhesAulaActivity extends AppCompatActivity {
         binding = ActivityDetalhesAulaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        int indiceAula = getIntent().getIntExtra(INDICE_AULA, -1);
-        Aula aula = GestorSemanaAulas.INSTANCIA.getAula(indiceAula);
+        indiceAula = getIntent().getIntExtra(INDICE_AULA, -1);
+        aula = GestorSemanaAulas.INSTANCIA.getAula(indiceAula);
 
         binding.textViewNome.setText(aula.getNome());
         binding.textViewNumero.setText(Long.toString(aula.getNumero()));
@@ -41,18 +45,19 @@ public class DetalhesAulaActivity extends AppCompatActivity {
         binding.textViewSala.setText(aula.getSala().getNome());
         binding.textViewProfessor.setText(aula.getProfessor().getNome());
 
-        ListView listViewAlunos = binding.listViewAlunos;
+        autalizarListaAlunos();
 
-        LinkedList<Aluno> alunos = aula.getAlunos();
+
+    }
+
+    private void autalizarListaAlunos() {
 
         ListAdapter listAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                alunos);
+                aula.getAlunos());
 
-        listViewAlunos.setAdapter(listAdapter);
-
-
+        binding.listViewAlunos.setAdapter(listAdapter);
     }
 
     public static Intent createIntent(Context context, int indiceAula){
@@ -83,6 +88,19 @@ public class DetalhesAulaActivity extends AppCompatActivity {
     }
 
     private void onItemAdicionarSelected() {
-        Toast.makeText(this, "Aqui deveria adicionar um aluno", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Aqui deveria adicionar um aluno", Toast.LENGTH_LONG).show();
+        //startActivity(AdicionarAlunoActivity.createIntent(this, indiceAula));
+        startActivityForResult(AdicionarAlunoActivity.createIntent(this, indiceAula), REQUEST_CODE_ADICIONAR_ALUNO);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == RESULT_OK){
+            if (requestCode == REQUEST_CODE_ADICIONAR_ALUNO){
+                autalizarListaAlunos();
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
