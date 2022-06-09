@@ -45,12 +45,12 @@ public class DetalhesAulaActivity extends AppCompatActivity {
         binding.textViewSala.setText(aula.getSala().getNome());
         binding.textViewProfessor.setText(aula.getProfessor().getNome());
 
-        autalizarListaAlunos();
+        atualizarListaAlunos();
 
 
     }
 
-    private void autalizarListaAlunos() {
+    private void atualizarListaAlunos() {
 
         ListAdapter listAdapter = new ArrayAdapter<>(
                 this,
@@ -95,9 +95,9 @@ public class DetalhesAulaActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == RESULT_OK){
+        if (resultCode == RESULT_OK){
             if (requestCode == REQUEST_CODE_ADICIONAR_ALUNO){
-                autalizarListaAlunos();
+                atualizarListaAlunos();
             }
         }
 
