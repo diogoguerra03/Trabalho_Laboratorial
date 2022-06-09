@@ -1,13 +1,17 @@
 package pt.ipleiria.estg.dei.ei.p2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -58,5 +62,27 @@ public class DetalhesAulaActivity extends AppCompatActivity {
         return intent;
          */
         return new Intent(context, DetalhesAulaActivity.class).putExtra(INDICE_AULA, indiceAula);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detalhes_aula, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.itemAdicionarAluno){
+            onItemAdicionarSelected();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void onItemAdicionarSelected() {
+        Toast.makeText(this, "Aqui deveria adicionar um aluno", Toast.LENGTH_LONG).show();
     }
 }

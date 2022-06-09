@@ -2,4 +2,5 @@
     <string name="app_name">Trabalho Laboratorial</string>
     <string name="professor">Professor: </string>
     <string name="alunos">\nAlunos: </string>
+    <string name="textoAdicionarAluno">Adicionar Aluno</string>
 </resources>
