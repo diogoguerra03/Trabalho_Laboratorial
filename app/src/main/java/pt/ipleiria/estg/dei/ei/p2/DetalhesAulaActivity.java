@@ -12,6 +12,7 @@ import android.widget.ListView;
 import java.util.LinkedList;
 
 import pt.ipleiria.estg.dei.ei.p2.databinding.ActivityDetalhesAulaBinding;
+import pt.ipleiria.estg.dei.ei.p2.modelo.Aluno;
 import pt.ipleiria.estg.dei.ei.p2.modelo.Aula;
 import pt.ipleiria.estg.dei.ei.p2.modelo.GestorSemanaAulas;
 
@@ -38,7 +39,7 @@ public class DetalhesAulaActivity extends AppCompatActivity {
 
         ListView listViewAlunos = binding.listViewAlunos;
 
-        /*LinkedList<Aula> alunos = GestorSemanaAulas.INSTANCIA.getAula(1);
+        LinkedList<Aluno> alunos = aula.getAlunos();
 
         ListAdapter listAdapter = new ArrayAdapter<>(
                 this,
@@ -47,7 +48,6 @@ public class DetalhesAulaActivity extends AppCompatActivity {
 
         listViewAlunos.setAdapter(listAdapter);
 
-         */
 
     }
 
